@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Testlo Ter</title>
+    <link rel="stylesheet" href="style/style1.css" /> <!-- เชื่อมต่อไฟล์ style.css -->
+    <style>
+        section {
+            height: 500px;
+            padding: 20px;
+            margin-bottom: 10px;
+        }
+
+        .button-warp {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            display: none; /* ซ่อนปุ่มในตอนเริ่มต้น */
+            padding: 10px; /* กำหนด padding เพื่อให้มีขนาดที่เหมาะสม */
+            box-sizing: border-box; /* รวม padding ในขนาดรวมของปุ่ม */
+            text-align: center; /* จัดข้อความให้อยู่กลางปุ่ม */
+            border: 1px solid #000; /* กำหนดกรอบให้ปุ่ม */
+            background-color: #f0f0f0; /* กำหนดสีพื้นหลังให้ปุ่ม */
+            font-size: 16px; /* ขนาดตัวอักษรในปุ่ม */
+        }
+
+        #button1 {
+            display: block;
+        }
+
+        /* กำหนดตำแหน่งของปุ่มใน parent ที่มี position relative */
+        body {
+            position: relative;
+            min-height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <img src="view.png" width="70%" height="50%">
+    <h1>Home page of the website</h1>
+
+    <!-- ปุ่มต่าง ๆ ที่จะถูกแสดงตามลำดับ -->
+    <button id="button1" class="button-warp" onclick="showNextButton('button1', 'button2')">Click me if you want answers.</button>
+    <button id="button2" class="button-warp" onclick="showNextButton('button2', 'button3')">What do you expect from this website?</button>
+    <button id="button3" class="button-warp" onclick="showNextButton('button3', 'button4')">You should stop where you're looking.</button>
+    <a href="./about.html"> 
+        <button id="button4" class="button-warp" onclick="finalButtonAction()">If you press this button, you will get what you are looking for.</button>
+    </a>
+
+    <!-- จุดหมายปลายทาง -->
+    <section id="section1"></section>
+    <section id="section2"></section>
+    <section id="section3"></section>
+    <section id="section4"></section>
+
+    <!-- เสียงคลิก -->
+    <audio id="clickSound" src="click.wav" preload="auto"></audio>
+
+    <script>
+        // ฟังก์ชันเล่นเสียง
+        function playClickSound() {
+            const sound = document.getElementById('clickSound');
+            sound.play();
+        }
+
+        // ฟังก์ชันการกระทำสุดท้ายเมื่อคลิกปุ่มสุดท้าย
+        function finalButtonAction() {
+            const button4 = document.getElementById('button4');
+            if (button4) {
+                button4.style.display = 'none'; // ซ่อนปุ่มสุดท้าย
+            }
+
+            // เล่นเสียง
+            playClickSound();
+        }
+
+        // ฟังก์ชันแสดงปุ่มถัดไป
+        function showNextButton(currentId, nextId) {
+            const currentButton = document.getElementById(currentId);
+            if (currentButton) {
+                currentButton.style.display = 'none';
+            } else {
+                console.error(`ไม่พบปุ่มที่มี ID: ${currentId}`);
+                return;
+            }
+
+            // เล่นเสียง
+            playClickSound();
+
+            // ถ้ามีปุ่มถัดไป ให้แสดงหลังจากหน่วงเวลา 900 มิลลิวินาที
+            if (nextId) {
+                setTimeout(() => {
+                    const nextButton = document.getElementById(nextId);
+                    if (nextButton) {
+                        nextButton.style.display = 'block';
+                        setRandomSize(nextButton); // สุ่มขนาดของปุ่มถัดไป
+                        setRandomPosition(nextButton); // กำหนดตำแหน่งสุ่มเมื่อแสดงปุ่มใหม่
+                    } else {
+                        console.error(`ไม่พบปุ่มถัดไปที่มี ID: ${nextId}`);
+                    }
+                }, 900); // หน่วงเวลา 900 มิลลิวินาที
+            }
+        }
+
+        // ฟังก์ชันตั้งตำแหน่งใหม่แบบสุ่มให้ปุ่ม
+        function setRandomPosition(button) {
+            const maxWidth = window.innerWidth - button.offsetWidth;
+            const maxHeight = window.innerHeight - button.offsetHeight;
+
+            const randomTop = Math.max(0, Math.random() * maxHeight);
+            const randomLeft = Math.max(0, Math.random() * maxWidth);
+
+            button.style.top = `${randomTop}px`;
+            button.style.left = `${randomLeft}px`;
+        }
+
+        // ฟังก์ชันสุ่มขนาดของปุ่ม
+        function setRandomSize(button) {
+            // กำหนดขนาดสุ่มในช่วงที่กำหนด
+            const minWidth = 100; // ความกว้างขั้นต่ำ
+            const maxWidth = 300; // ความกว้างสูงสุด
+            const minHeight = 40; // ความสูงขั้นต่ำ
+            const maxHeight = 100; // ความสูงสูงสุด
+
+            const randomWidth = Math.floor(Math.random() * (maxWidth - minWidth + 1)) + minWidth;
+            const randomHeight = Math.floor(Math.random() * (maxHeight - minHeight + 1)) + minHeight;
+
+            button.style.width = `${randomWidth}px`;
+            button.style.height = `${randomHeight}px`;
+        }
+
+        // อัปเดตตำแหน่งปุ่มเมื่อมีการปรับขนาดหน้าจอ
+        window.addEventListener('resize', () => {
+            // อัปเดตตำแหน่งของปุ่มที่กำลังแสดง
+            const buttons = document.querySelectorAll('.button-warp');
+            buttons.forEach(button => {
+                if (button.style.display === 'block') {
+                    setRandomPosition(button);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

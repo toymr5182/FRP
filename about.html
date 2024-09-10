@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Load SVG from File</title>
+    <link rel="stylesheet" href="style/style2.css"/>
+    <script src="script/script.js" defer></script> <!-- เชื่อมโยงไฟล์ JavaScript -->
+</head>
+<body>
+    <!-- วิดีโอพื้นหลัง -->
+    <video autoplay id="bgVideo" preload="auto" muted>
+        <source src="M1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- SVG Container -->
+    <div class="text-container" id="svg-container"></div>
+
+    <!-- ปุ่มยืนยัน -->
+    <button class="confirm-button" id="confirmButton">If you see this message press it and what I'm about to tell you will appear.</button>
+
+    <!-- ปุ่มที่แสดงหลังจาก SVG ทำงานเสร็จ -->
+    <button class="action-button" id="button1" onclick="loadSVG('Svg/Love2.svg', 'Love3.mp4')">accept</button>
+    <button class="action-button" id="button2" onclick="loadSVG('Svg/Sad.svg', 'Sad1.mp4')">Not accepted</button>
+</body>
+</html>
