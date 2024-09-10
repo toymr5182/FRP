@@ -1,0 +1,97 @@
+#bgVideo {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -2; /* ทำให้วิดีโออยู่ด้านล่างสุด */
+    transform: translate(-50%, -50%);
+    background-size: cover;
+}
+
+.text-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    display: none; /* ซ่อน SVG ไว้ก่อน */
+}
+
+.text-path {
+    fill: none; /* สีที่ต้องการให้ทึบ */
+    stroke: lightpink;
+    stroke-width: 4;
+    stroke-dasharray: 5000;
+    stroke-dashoffset: 5100;
+    animation: draw 50s linear forwards;
+}
+
+@keyframes draw {
+    to {
+        stroke-dashoffset: 5;
+    }
+}
+
+.confirm-button {
+    position: absolute;
+    width: 400px;
+    height: 150px;
+    top: 150px;
+    left: 270px;
+    padding: 10px 20px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #ff4081;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s, transform 0.2s;
+    z-index: 1;
+    display: block; /* แสดงปุ่ม Confirm */
+}
+
+.confirm-button:hover {
+    background-color: #e91e63;
+}
+
+.confirm-button:active {
+    transform: scale(0.95);
+}
+
+.action-button {
+    position: absolute;
+    width: 200px;
+    height: 60px;
+    padding: 10px 20px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #e06666;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s, transform 0.2s;
+    z-index: 1;
+    display: none; /* ซ่อนปุ่มไว้ก่อน */
+}
+
+.action-button:hover {
+    background-color: #e35b5b;
+}
+
+.action-button:active {
+    transform: scale(0.95);
+}
+
+#button1 {
+    top: 350px;
+    left: 270px;
+}
+
+#button2 {
+    top: 350px;
+    left: 500px;
+}

@@ -1,0 +1,98 @@
+/* กำหนดสไตล์พื้นฐานของ body */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #b1e006, #b403ea); /* สีพื้นหลังโทนสว่าง */
+    color: #333;
+}
+
+section:hover {
+    transform: scale(1.02);
+}
+
+/* การตั้งค่าสำหรับ h1 */
+h1 {
+    text-align: center;
+    color: #f2eded;
+    margin: 20px 0;
+    font-size: 2.5rem;
+}
+
+/* ปุ่มที่เชื่อมโยงไปยังลิงก์ */
+a button {
+    background: #ff6b6b;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+a button:hover {
+    background: #ff5252;
+}
+
+/* สไตล์ปุ่มที่แสดงในหน้าจอ */
+.button-warp {
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background: #002045;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: background 0.3s, transform 0.3s;
+}
+
+.button-warp:hover {
+    background: #357ab8;
+    transform: translateY(-5px);
+}
+
+/* สไตล์ของปุ่มที่แสดงตามลำดับ */
+#button1 {
+    width: 300px;
+    height: 100px;
+    top: 600px;
+    left: 340px;
+    background: #02323c;
+    position: absolute; /* เพิ่มตำแหน่ง */
+}
+
+#button2 {
+    width: 300px;
+    height: 100px;
+    top: 720px; /* ตัวอย่างการเปลี่ยนตำแหน่ง */
+    left: 340px;
+    background: #310143;
+    position: absolute; /* เพิ่มตำแหน่ง */
+}
+
+#button3 {
+    width: 300px;
+    height: 100px;
+    top: 840px; /* ตัวอย่างการเปลี่ยนตำแหน่ง */
+    left: 340px;
+    background: #500800;
+    position: absolute; /* เพิ่มตำแหน่ง */
+}
+
+#button4 {
+    width: 300px;
+    height: 100px;
+    top: 960px; /* ตัวอย่างการเปลี่ยนตำแหน่ง */
+    left: 340px;
+    background: #015122;
+    position: absolute; /* เพิ่มตำแหน่ง */
+}
+
+/* ปรับแต่งภาพ */
+img {
+    display: block;
+    margin: 20px auto; /* แก้ไขข้อผิดพลาดที่นี่ */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
